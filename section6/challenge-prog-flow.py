@@ -24,3 +24,27 @@
 # This challenge is intended to practise for loops and if/else statements, so although
 # you could use other techniques (such as splitting the string up), that's not the
 # approach we're looking for here.
+
+
+ip_address = input("input a ip address: ") + "."
+count_nums = 0
+segments = 1
+segment_length = 0
+
+for i in range(0, len(ip_address)):
+    # first char contains a .
+    if(ip_address[i] == "."):
+        print("segment {0} with lenght of {1}".format(segments, segment_length))
+        segments += 1
+        segment_length = 0
+    # ith char contains a number
+    elif(ip_address[i] in "0123456789"):
+        segment_length += 1
+
+
+
+
+
+
+
+
