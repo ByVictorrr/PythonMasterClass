@@ -105,83 +105,83 @@ def deal_player():
 
 
 
+if __name__ == "__main__":
+
+    mainWindow = tkinter.Tk()
+    mainWindow.title("Black Jack")
+    mainWindow.geometry("640x480")
+    mainWindow.configure(background='green')
+
+    # result label
+    result_text = tkinter.StringVar()
+    result = tkinter.Label(mainWindow, textvariable=result_text)
+    result.grid(row=0, column=0, columnspan=3)
+
+    # Game frame card_frame = tkinter.Frame(mainWindow, relief="sunken", borderwidth=1, background="green")
+    card_frame = tkinter.Frame(mainWindow, relief='sunken', borderwidth=1,background='green')
+    card_frame.grid(row=1, column=0, sticky='nw')
 
 
-mainWindow = tkinter.Tk()
-mainWindow.title("Black Jack")
-mainWindow.geometry("640x480")
-mainWindow.configure(background='green')
+    ########################### Dealer Frame ########################################
 
-# result label
-result_text = tkinter.StringVar()
-result = tkinter.Label(mainWindow, textvariable=result_text)
-result.grid(row=0, column=0, columnspan=3)
+    dealer_score_label = tkinter.IntVar()
+    tkinter.Label(card_frame, text="Dealer", background="green", fg="white").grid(row=0, column=0)
+    tkinter.Label(card_frame, textvariable=dealer_score_label, background="green", fg="white").grid(row=1, column=0)
 
-# Game frame card_frame = tkinter.Frame(mainWindow, relief="sunken", borderwidth=1, background="green")
-card_frame = tkinter.Frame(mainWindow, relief='sunken', borderwidth=1,background='green')
-card_frame.grid(row=1, column=0, sticky='nw')
+    # embedded frame hold the card images
+    dealer_card_frame = tkinter.Frame(card_frame, background='green')
+    dealer_card_frame.grid(row=0, column=1, sticky='ew', rowspan=2)
 
 
-########################### Dealer Frame ########################################
-
-dealer_score_label = tkinter.IntVar()
-tkinter.Label(card_frame, text="Dealer", background="green", fg="white").grid(row=0, column=0)
-tkinter.Label(card_frame, textvariable=dealer_score_label, background="green", fg="white").grid(row=1, column=0)
-
-# embedded frame hold the card images
-dealer_card_frame = tkinter.Frame(card_frame, background='green')
-dealer_card_frame.grid(row=0, column=1, sticky='ew', rowspan=2)
+    #################### Player card ################################################
 
 
-#################### Player card ################################################
+    player_score_label = tkinter.IntVar()
+    tkinter.Label(card_frame, text="Player", background='green', fg='white').grid(row=2, column=0)
+    tkinter.Label(card_frame, textvariable=player_score_label, background='green', fg='white').grid(row=3, column=0)
 
 
-player_score_label = tkinter.IntVar()
-tkinter.Label(card_frame, text="Player", background='green', fg='white').grid(row=2, column=0)
-tkinter.Label(card_frame, textvariable=player_score_label, background='green', fg='white').grid(row=3, column=0)
+    # embedded frame to hold the card images
+    player_card_frame = tkinter.Frame(card_frame, background='green')
+    player_card_frame.grid(row=2, column=1, sticky='ew', rowspan=2)
 
 
-# embedded frame to hold the card images
-player_card_frame = tkinter.Frame(card_frame, background='green')
-player_card_frame.grid(row=2, column=1, sticky='ew', rowspan=2)
+    # Button frame
+    btn_frame = tkinter.Frame(mainWindow)
+    btn_frame.grid(row=3, column=0, sticky='w')
 
 
-# Button frame
-btn_frame = tkinter.Frame(mainWindow)
-btn_frame.grid(row=3, column=0, sticky='w')
+    dealer_btn = tkinter.Button(btn_frame, text="Dealer", command=deal_dealer)
+    dealer_btn.grid(row=0, column=0)
+
+    player_btn = tkinter.Button(btn_frame, text="Player", command=deal_player)
+    player_btn.grid(row=0, column=1)
 
 
-dealer_btn = tkinter.Button(btn_frame, text="Dealer", command=deal_dealer)
-dealer_btn.grid(row=0, column=0)
+    ####################################
 
-player_btn = tkinter.Button(btn_frame, text="Player", command=deal_player)
-player_btn.grid(row=0, column=1)
+    # load cards
+    cards = []
+    load_images(cards)
+    # print(cards)
 
+    # Create a new deck of cards and shuffle them
+    deck = list(cards)
+    random.shuffle(deck)
 
-####################################
-
-# load cards
-cards = []
-load_images(cards)
-# print(cards)
-
-# Create a new deck of cards and shuffle them
-deck = list(cards)
-random.shuffle(deck)
-
-# Create the list to store the dealer and and players hands
-dealer_hand = []
-player_hand = []
+    # Create the list to store the dealer and and players hands
+    dealer_hand = []
+    player_hand = []
 
 
-deal_player()
-dealer_hand.append(deal_card(dealer_card_frame))
-dealer_score_label.set(score_hand(dealer_hand))
-deal_player()
+    deal_player()
+    dealer_hand.append(deal_card(dealer_card_frame))
+    dealer_score_label.set(score_hand(dealer_hand))
+    deal_player()
 
 
 
-mainWindow.mainloop()
+    mainWindow.mainloop()
 
 
     
