@@ -3,9 +3,13 @@ class Song:
     """ Class to Represent a song
     
     Atrributes:
-        title (str): THe title of the song 
-        artist (Artist): An artist object representing the songs creator
+        title (str): The title of the song 
+        artist (str): The songs creator name
         duration (int): the Duration of the song in seconds. May be zero
+
+    Modify the program so that the class struc matches the simplifed diagram:
+        Artist objects can hold ref to Album objects, and Album objects can hold 
+        references to song objects but there must no circluar ref
 
     """
     def __init__(self, title, artist, duration=0):
@@ -26,7 +30,7 @@ class Album:
     Attributes:
         name (str): The name of the album.
         year (int): The year was album was released.
-        artist (Artist): The artist responsible for the album. If not specifed,
+        artist (str): The name of artist responsible for the album. If not specifed,
         the artist will default to an artist with the name "Various Artist"
         tracks (List[Song]): a list of songs on the album.
        
@@ -38,7 +42,7 @@ class Album:
         self.year = year
         self.artist = artist
         if artist is None:
-            self.artist = "Various Artists"
+            self.artist = Artist("Various Artists")
         else:
             self.artist = artist
 

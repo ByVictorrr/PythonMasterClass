@@ -13,8 +13,7 @@ class Song:
         self.artist = artist
         self.duration = duration
     
-
-class Album:
+   class Album:
     """ Class to represent an Album, using its track list
     
     Attributes:
