@@ -80,7 +80,7 @@ insert
 * search first by field_0 then field_i
 
 # JOIN tables
-[join pic](https://github.com/ByVictorrr/PythonMasterClass/blob/master/section13/join.png)
+![join pic](https://github.com/ByVictorrr/PythonMasterClass/blob/master/section13/join.png)
 
 
 
