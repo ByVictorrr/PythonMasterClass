@@ -9,9 +9,11 @@ db.execute("INSERT INTO contacts VALUES('Brian', 1234, 'brian@gmail.com')")
 cursor = db.cursor()
 cursor.execute("SELECT * FROM contacts")
 
+# a list of tupils
 print(cursor.fetchall())
 
 for row in cursor:
     print(row)
+db.commit()
 db.close()
 
