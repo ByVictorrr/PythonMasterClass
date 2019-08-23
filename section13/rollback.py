@@ -53,3 +53,8 @@ if __name__ == '__main__':
 	john.withdraw(0)
 	john.show_balance()
 
+	terry = Account("Terry")
+	graham = Account("Graham", 9000)
+	eric = Account("Eric", 7000)
+
+db.close()
