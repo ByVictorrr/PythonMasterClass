@@ -31,3 +31,17 @@ exits = {0: {"Q": 0},
          3: {"W": 1, "Q": 0},
          4: {"N": 1, "W": 2, "Q": 0},
          5: {"W": 2, "S": 1, "Q": 0}}
+
+
+
+
+loc_exits = [(loc, "able to exit") if len(exits[loc].values()) > 1  else (loc, "not able to exit") for loc in locations]
+
+print(loc_exits)
+
+for loc in locations:
+	exit_str = ''
+	print(loc_exits[loc])
+	for exit in exits[loc].keys():
+		exit_str += exit
+	print("the exits are: {}".format(exit_str))
